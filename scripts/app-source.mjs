@@ -24,6 +24,7 @@ export async function appSourceFiles(root) {
     }
   }
   for (const path of ['LICENSE', 'COPYRIGHT', 'README.md', 'THIRD_PARTY_NOTICES.md', 'package.json', 'package-lock.json', 'tsconfig.json', 'vite.config.ts', 'index.html', '.gitignore', '.gitattributes', '.npmrc', 'src', 'scripts', 'public/favicon.svg', 'public/info.css', 'public/disclaimer', 'public/privacy', 'licenses']) await add(path);
+  for (const name of ['DEVELOPMENT.md', 'TESTING.md']) await add(`docs/${name}`);
   for (const name of ['README.md', 'pins.json', 'archive-manifest.json', 'core-evidence.txt', 'release-evidence.json', 'download-sources.mjs', 'prepare_rebuild.py']) await add(`third_party_source/${name}`);
   for (const name of ['gifuct-js', 'js-binary-schema-parser']) {
     for (const entry of ['src', 'lib', 'LICENSE', 'package.json', 'README.md', '.babelrc', '.prettierrc']) await add(`node_modules/${name}/${entry}`, `dependency_source/${name}/${entry}`);

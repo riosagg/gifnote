@@ -1,0 +1,12 @@
+# Reviewed license bytes must match licenses/manifest.json on every checkout.
+licenses/** -text
+# The application GPL text is compared verbatim with the FFmpeg GPL copy.
+LICENSE -text
+
+# Preserve corresponding-source archives and distributed binary assets.
+third_party_source/archives/** -text
+*.wasm binary
+*.tgz binary
+*.woff2 binary
+
+.gitattributes text eol=lf

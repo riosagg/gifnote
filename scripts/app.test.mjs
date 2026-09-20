@@ -14,6 +14,7 @@ import { inspectGif, limitGifDuration } from '../src/gif-info.ts';
 import { Timeline } from '../src/timeline.ts';
 import { MediaController } from '../src/media.ts';
 import { ConversionEngine } from '../src/ffmpeg.ts';
+import { revealProgress } from '../src/progress-view.ts';
 import { dom, emit, settle } from './test-dom.mjs';
 
 function gif(delays) {
@@ -21,6 +22,25 @@ function gif(delays) {
   const image = [44,0,0,0,0,1,0,1,0,0,2,2,68,1,0];
   return new Uint8Array([...header, ...delays.flatMap(t => [33,249,4,0,t&255,t>>8,0,0,...image]),59]);
 }
+
+test('progress visibility: no movement when visible; smooth offscreen scroll; respect visual viewport and reduced motion', () => {
+  const el=dom(); const panel=el('status-panel'); panel.hidden=false;
+  window.innerHeight=800; window.matchMedia=()=>({matches:false});
+  let rect={top:100,height:120}; const calls=[];
+  panel.getBoundingClientRect=()=>rect;
+  panel.scrollIntoView=options=>calls.push(options);
+  revealProgress(panel); assert.equal(calls.length,0);
+  rect={top:-140,height:120}; revealProgress(panel);
+  assert.deepEqual(calls.pop(),{behavior:'smooth',block:'start'});
+  rect={top:750,height:120}; revealProgress(panel);
+  assert.deepEqual(calls.pop(),{behavior:'smooth',block:'start'});
+  window.visualViewport={offsetTop:100,height:400};
+  rect={top:50,height:120}; revealProgress(panel); assert.equal(calls.pop().behavior,'smooth');
+  rect={top:100,height:600}; revealProgress(panel); assert.equal(calls.length,0);
+  rect={top:-140,height:120}; window.matchMedia=()=>({matches:true});
+  revealProgress(panel); assert.equal(calls.pop().behavior,'instant');
+  panel.hidden=true; revealProgress(panel); assert.equal(calls.length,0);
+});
 
 test('selection move cases A/B/C/D and fractional source edges preserve length', () => {
   assert.deepEqual(moveSelection(40,55,10,120), { start:50,end:65 });
@@ -116,7 +136,15 @@ test('media destroy releases URL, decoded GIF, dimensions and playback state', a
 test('actual file handlers: video -> clear -> drop GIF, same GIF reselect, replace, result reset', async () => {
   const el=dom();const originalConvert=ConversionEngine.prototype.convert;let cancels=0;const originalCancel=ConversionEngine.prototype.cancel;
   ConversionEngine.prototype.cancel=function(){cancels++;return originalCancel.call(this);};
-  ConversionEngine.prototype.convert=async()=>({blob:new Blob([gif([20,30])]),info:{width:1,height:1,duration:0.5,frames:2},settings:{fps:10,colors:128},adjusted:false});
+  ConversionEngine.prototype.convert=async(_request,status)=>{
+    status('変換機能を準備しています…','準備中');
+    status('GIFを作成しています…','変換中',20);
+    return {blob:new Blob([gif([20,30])]),info:{width:1,height:1,duration:0.5,frames:2},settings:{fps:10,colors:128},adjusted:false};
+  };
+  let progressScrolls=0;
+  window.innerHeight=800;
+  el('status-panel').getBoundingClientRect=()=>({top:-200,height:100});
+  el('status-panel').scrollIntoView=()=>{progressScrolls++;};
   const revoked=[];const revoke=URL.revokeObjectURL;URL.revokeObjectURL=url=>{revoked.push(url);revoke(url);};
   try {
     await import('../src/main.ts');
@@ -128,6 +156,7 @@ test('actual file handlers: video -> clear -> drop GIF, same GIF reselect, repla
     emit(document,'drop',{dataTransfer:{files:[file]}});await settle();assert.equal(el('file-name').textContent,'a.gif');assert.equal(el('editor').hidden,false);
     const preset=el('crop-presets').children.find(x=>x.dataset.ratio==='4:3');emit(el('crop-presets'),'click',{target:preset});el('upscale-crop').checked=true;
     el('convert').click();await settle();assert.equal(el('result').hidden,false);const resultURL=el('result-image').src;
+    assert.equal(progressScrolls,1,'only the first conversion status may scroll');
     el('clear-file').click();assert.ok(revoked.includes(resultURL));assert.equal(el('result').hidden,true);assert.equal(el('result-stats').children.length,0);assert.equal(el('download').href,'');
     assert.equal(el('crop-overlay').hidden,true);assert.equal(el('upscale-crop').checked,false);assert.equal(el('status-panel').hidden,true);assert.equal(el('error').hidden,true);assert.equal(el('progress').value,0);
     await choose(file);assert.equal(el('file-name').textContent,'a.gif');assert.equal(el('file-input').value,'');

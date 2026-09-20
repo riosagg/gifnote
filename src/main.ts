@@ -11,6 +11,7 @@ import { CropController } from './crop';
 import { ConversionEngine, type StatusUpdate } from './ffmpeg';
 import { MediaController } from './media';
 import { Timeline } from './timeline';
+import { revealProgress } from './progress-view';
 import { element, sizeLabel, timeLabel, userError } from './utils';
 
 const engine = new ConversionEngine();
@@ -181,6 +182,7 @@ element('convert').addEventListener('click', async () => {
   operation = new AbortController();
   const current = operation;
   const file = media.file;
+  let progressRevealed = false;
   setBusy(true);
   try {
     const result = await engine.convert({
@@ -192,7 +194,14 @@ element('convert').addEventListener('click', async () => {
         fps: Number(element<HTMLSelectElement>('output-fps').value),
         colors: Number(element<HTMLSelectElement>('output-colors').value),
       },
-    }, (...args) => { if (operation === current) status(...args); });
+    }, (...args) => {
+      if (operation !== current) return;
+      status(...args);
+      if (!progressRevealed) {
+        progressRevealed = true;
+        revealProgress(element('status-panel'));
+      }
+    });
     current.signal.throwIfAborted();
     resultURL = URL.createObjectURL(result.blob);
     element<HTMLImageElement>('result-image').src = resultURL;

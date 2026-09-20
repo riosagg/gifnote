@@ -271,6 +271,13 @@ main {
   font-size: 15px;
   margin-right: 3px;
 }
+.conversion-time-note {
+  display: block;
+  max-width: 800px;
+  margin: 6px auto 0;
+  font-size: inherit;
+  text-wrap: pretty;
+}
 .features {
   max-width: 800px;
   margin: 51px auto 0;
@@ -791,6 +798,7 @@ progress::-webkit-progress-value {
   border: 1px solid #eee1b3;
   color: #856a24;
 }
+.warning strong { display: block; margin-bottom: 4px; }
 .result {
   background: white;
   border: 1px solid #bcd9c9;

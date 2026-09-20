@@ -72,12 +72,21 @@ function clearResult() {
   resultURL = undefined;
   element('step-3').classList.remove('active');
 }
+function heavyInputWarning() {
+  const notice = document.createElement('div');
+  const title = document.createElement('strong');
+  const body = document.createElement('p');
+  title.textContent = 'この動画は処理に時間がかかる可能性があります';
+  body.textContent = '短い動画でも、容量・解像度・撮影ビットレートが高い場合は変換に時間がかかります。端末によっては数分かかることがあります。';
+  notice.append(title, body);
+  return notice;
+}
 function checkWarning(file: File) {
-  const warnings: string[] = [];
-  if (file.size >= CONFIG.warnInputSizeMB * MB || media.width * media.height >= CONFIG.warnPixels || media.duration >= CONFIG.warnDuration) warnings.push('大きなファイルです。処理に時間がかかったり、端末のメモリが足りなくなることがあります。短い範囲からお試しください。');
+  const warnings: (string | HTMLElement)[] = [];
+  if (file.size >= CONFIG.warnInputSizeMB * MB || media.width * media.height >= CONFIG.warnPixels || media.duration >= CONFIG.warnDuration) warnings.push(heavyInputWarning());
   if (media.proxy) warnings.push('この動画は表示用の軽いプレビューを作成しています。GIFは元の動画から変換します。');
   if (media.isStatic) warnings.push('静止GIFです。同じ画像を表示するGIFとして書き出します。');
-  element('warning').textContent = warnings.join(' ');
+  element('warning').replaceChildren(...warnings.flatMap((message, index) => index ? [' ', message] : [message]));
   element('warning').hidden = !warnings.length;
 }
 async function openFile(file: File) {
@@ -89,7 +98,7 @@ async function openFile(file: File) {
   element('error').hidden = element('warning').hidden = true;
   status('ファイルを読み込んでいます…', '動画の長さや大きさを確認しています。');
   if (file.size >= CONFIG.warnInputSizeMB * MB) {
-    element('warning').textContent = '大きなファイルです。読み込みやプレビューの準備に時間がかかることがあります。';
+    element('warning').replaceChildren(heavyInputWarning());
     element('warning').hidden = false;
   }
   try {

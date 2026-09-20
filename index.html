@@ -19,13 +19,13 @@ See the root LICENSE and COPYRIGHT files for details.
   <body>
     <header class="site-header"><a class="brand" href="./" aria-label="GIFnote ホーム"><span class="brand-icon">g<span>↗</span></span>GIF<span>note</span></a><span class="header-note">動画から、記事のひとコマへ。</span><span class="local-badge"><span></span>ブラウザ内で完結</span></header>
     <main>
-      <section class="intro"><p class="eyebrow">A LITTLE MOTION, A BETTER STORY</p><h1>伝わる一瞬を、<br class="mobile-break" /><span>記事へ。</span></h1><p>動画やGIFの好きな部分を切り出して、<br class="mobile-break" />noteにちょうどいいGIFに。</p></section>
+      <section class="intro"><h1>記事に、<span>動きを。</span></h1><p>動画やGIFの好きな部分を切り出して、<br class="mobile-break" />noteにちょうどいいGIFに。</p></section>
       <ol class="steps" aria-label="作成の手順"><li class="active" id="step-1"><span>01</span>ファイルを選ぶ</li><li id="step-2"><span>02</span>使う部分を選ぶ</li><li id="step-3"><span>03</span>GIFを保存</li></ol>
       <section id="upload-section" class="upload-section" aria-label="ファイル入力">
         <button id="drop-zone" class="drop-zone" type="button"><span class="upload-icon" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 32 32" fill="none"><path d="M16 21V5m-6 6 6-6 6 6M6 20v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><strong>動画またはGIFをここにドロップ</strong><span class="drop-sub">または <span class="text-link">ファイルを選択</span></span><span class="file-types">MP4 · WebM · MOV · GIF</span></button>
         <input id="file-input" type="file" accept=".mp4,.webm,.mov,.gif,video/mp4,video/webm,video/quicktime,image/gif" hidden />
       </section>
-      <p class="privacy"><span aria-hidden="true">◇</span> 動画・GIFはサーバーへ送信されません。<br class="mobile-break" />変換処理はこのブラウザ内だけで行われます。</p>
+      <p class="privacy"><span aria-hidden="true">◇</span> 動画・GIFはサーバーへ送信されません。<br class="mobile-break" />変換処理はこのブラウザ内だけで行われます。<small class="conversion-time-note">動画が短くても、容量・解像度・撮影ビットレートが高い素材では、変換に数分かかることがあります。</small></p>
       <section id="status-panel" class="status-panel" hidden aria-live="polite"><div class="status-row"><strong id="status-text">読み込み中…</strong><button id="cancel" class="text-button" type="button">中止</button></div><progress id="progress" max="100" aria-label="処理の進捗"></progress><p id="status-detail">初回のみ変換機能の準備に少し時間がかかります。</p></section>
       <div id="error" class="message error" role="alert" hidden></div>
       <div id="warning" class="message warning" role="status" hidden></div>
@@ -47,7 +47,7 @@ See the root LICENSE and COPYRIGHT files for details.
         </aside></div>
       </fieldset>
       <section id="result" class="result" hidden aria-labelledby="result-heading"><div class="result-heading"><span class="success-icon" aria-hidden="true">✓</span><div><p class="eyebrow">READY FOR YOUR STORY</p><h2 id="result-heading">note向けGIFが完成しました</h2></div></div><div class="result-grid"><div class="result-preview"><img id="result-image" alt="変換したGIFのループプレビュー" /></div><div class="result-summary"><dl id="result-stats"></dl><p id="result-note"></p><a id="download" class="primary" download>GIFを保存 <span aria-hidden="true">↓</span></a><p class="hint">保存したGIFをnoteの記事本文に追加できます。</p></div></div></section>
-      <section id="features" class="features" aria-label="GIFnoteの特徴"><article><span>01 / SELECT</span><h2>好きな一瞬を。</h2><p id="feature-duration"></p></article><article><span>02 / FRAME</span><h2>見せたいところだけ。</h2><p>余白や不要な部分を切り抜いて、<br />伝えたい動きにフォーカス。</p></article><article><span>03 / FIT</span><h2>サイズは、おまかせ。</h2><p>横幅・なめらかさ・容量を調整。<br />記事に載せやすいGIFに仕上げます。</p></article></section>
+      <section id="features" class="features" aria-label="GIFnoteの特徴"><article><span>01 / SELECT</span><h2>好きな一瞬を。</h2><p id="feature-duration"></p></article><article><span>02 / FRAME</span><h2>見せたいところだけ。</h2><p>余白や不要な部分を切り抜いて、<br />伝えたい動きにフォーカス。</p></article><article><span>03 / FIT</span><h2>サイズは、おまかせ。</h2><p>最大620px・最大15秒を基準に、フレームレートや容量を自動調整。<br />20MB未満を目安に、noteへ載せやすいGIFに仕上げます。</p></article></section>
     </main>
     <footer><span>GIFnote <span class="muted">/ 小さな動きで、もっと伝わる。</span></span><nav class="footer-links" aria-label="サイト情報"><a href="https://github.com/riosagg/gifnote" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><a href="./license/">License</a><a href="./licenses/">Third-party licenses</a><a href="./disclaimer/">免責事項</a><a href="./privacy/">プライバシー</a><span>note非公式ツール</span></nav></footer>
     <script type="module" src="/src/main.ts"></script>

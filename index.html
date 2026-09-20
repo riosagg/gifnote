@@ -1,0 +1,55 @@
+<!doctype html>
+<!--
+Copyright (C) 2026 riosagg
+SPDX-License-Identifier: GPL-2.0-or-later
+This file is part of GIFnote and is licensed under GNU GPL version 2
+or (at your option) any later version, WITHOUT ANY WARRANTY.
+See the root LICENSE and COPYRIGHT files for details.
+-->
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#087f67" />
+    <meta name="description" content="動画・GIFから、noteに載せる短いGIFを。アップロード不要、ブラウザ内で切り出し・トリミング・容量調整。" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <title>GIFnote — 伝わる一瞬を、記事へ。</title>
+  </head>
+  <body>
+    <header class="site-header"><a class="brand" href="./" aria-label="GIFnote ホーム"><span class="brand-icon">g<span>↗</span></span>GIF<span>note</span></a><span class="header-note">動画から、記事のひとコマへ。</span><span class="local-badge"><span></span>ブラウザ内で完結</span></header>
+    <main>
+      <section class="intro"><p class="eyebrow">A LITTLE MOTION, A BETTER STORY</p><h1>伝わる一瞬を、<br class="mobile-break" /><span>記事へ。</span></h1><p>動画やGIFの好きな部分を切り出して、<br class="mobile-break" />noteにちょうどいいGIFに。</p></section>
+      <ol class="steps" aria-label="作成の手順"><li class="active" id="step-1"><span>01</span>ファイルを選ぶ</li><li id="step-2"><span>02</span>使う部分を選ぶ</li><li id="step-3"><span>03</span>GIFを保存</li></ol>
+      <section id="upload-section" class="upload-section" aria-label="ファイル入力">
+        <button id="drop-zone" class="drop-zone" type="button"><span class="upload-icon" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 32 32" fill="none"><path d="M16 21V5m-6 6 6-6 6 6M6 20v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><strong>動画またはGIFをここにドロップ</strong><span class="drop-sub">または <span class="text-link">ファイルを選択</span></span><span class="file-types">MP4 · WebM · MOV · GIF</span></button>
+        <input id="file-input" type="file" accept=".mp4,.webm,.mov,.gif,video/mp4,video/webm,video/quicktime,image/gif" hidden />
+      </section>
+      <p class="privacy"><span aria-hidden="true">◇</span> 動画・GIFはサーバーへ送信されません。<br class="mobile-break" />変換処理はこのブラウザ内だけで行われます。</p>
+      <section id="status-panel" class="status-panel" hidden aria-live="polite"><div class="status-row"><strong id="status-text">読み込み中…</strong><button id="cancel" class="text-button" type="button">中止</button></div><progress id="progress" max="100" aria-label="処理の進捗"></progress><p id="status-detail">初回のみ変換機能の準備に少し時間がかかります。</p></section>
+      <div id="error" class="message error" role="alert" hidden></div>
+      <div id="warning" class="message warning" role="status" hidden></div>
+      <fieldset id="editor" class="editor" hidden>
+        <legend class="sr-only">GIFの編集</legend>
+        <div class="file-bar"><div><span class="eyebrow">YOUR SOURCE</span><h2 id="file-name"></h2><p id="file-info"></p></div><div class="file-actions"><button id="replace-file" type="button" class="secondary small">別のファイルを選ぶ</button><button id="clear-file" type="button" class="secondary small">取り消し</button></div></div>
+        <div class="editor-grid"><section class="preview-panel" aria-label="入力プレビュー"><div class="preview-well"><div id="media-stage" class="media-stage"><video id="video" playsinline muted preload="metadata" hidden></video><canvas id="gif-canvas" hidden></canvas><div id="crop-overlay" class="crop-overlay" hidden><div id="crop-box" class="crop-box" tabindex="0" role="group" aria-label="トリミング枠。矢印キーで移動、Shiftと矢印キーでサイズ変更"><span class="crop-grid"></span><span class="crop-size" id="crop-size"></span><i data-handle="nw"></i><i data-handle="n"></i><i data-handle="ne"></i><i data-handle="e"></i><i data-handle="se"></i><i data-handle="s"></i><i data-handle="sw"></i><i data-handle="w"></i></div></div></div></div>
+          <div class="playback"><button id="play" class="secondary small" type="button">▶ 選択範囲を再生</button><span id="play-time">00:00.0</span><span class="muted">音声なし・ループ再生</span></div>
+          <div class="timeline-heading"><h3>使う時間を選ぶ</h3><span class="selection-pill" id="selection-duration"></span></div>
+          <div class="timeline-visual" id="timeline-visual"><span id="selected-track" tabindex="0" role="group" aria-label="選択範囲を左右にドラッグして移動"></span><span id="playhead"></span></div>
+          <label class="range-row"><span>開始</span><input id="start-range" type="range" min="0" step="any" aria-label="開始位置" /><input id="start-number" type="number" min="0" step="any" aria-label="開始時間（秒）" /><span>秒</span></label>
+          <label class="range-row"><span>終了</span><input id="end-range" type="range" min="0" step="any" aria-label="終了位置" /><input id="end-number" type="number" min="0" step="any" aria-label="終了時間（秒）" /><span>秒</span></label>
+          <label class="scrub-label" for="scrub">プレビュー位置</label><input id="scrub" class="scrub" type="range" min="0" step="any" aria-label="再生位置" /><div class="timeline-labels"><span>00:00</span><span id="total-time"></span></div>
+        </section>
+        <aside class="settings-panel"><div class="section-heading"><span class="section-number">01</span><h3>画角を整える</h3></div><p class="muted">見せたいところだけ、すっきりと。</p><div id="crop-presets" class="segmented" aria-label="トリミングの比率"><button type="button" data-ratio="none" aria-pressed="true">なし</button><button type="button" data-ratio="free" aria-pressed="false">自由</button><button type="button" data-ratio="16:9" aria-pressed="false">16:9</button><button type="button" data-ratio="4:3" aria-pressed="false">4:3</button><button type="button" data-ratio="1:1" aria-pressed="false">1:1</button></div><p class="hint">枠をドラッグして移動。角や辺でサイズを調整できます。キーボードは矢印キーで移動、Shift＋矢印キーでサイズ変更。</p><button id="crop-reset" class="text-button" type="button">画角をリセット</button>
+          <hr /><div class="section-heading"><span class="section-number">02</span><h3>noteにちょうどよく</h3></div><dl class="output-defaults"><div><dt>長さ</dt><dd id="default-duration"></dd></div><div><dt>横幅</dt><dd id="default-width"></dd></div><div><dt>なめらかさ</dt><dd id="default-fps"></dd></div><div><dt>ファイル容量</dt><dd id="default-size"></dd></div></dl><p class="auto-note">容量が大きいときは、自動で軽量化します。</p>
+          <details><summary>詳細設定</summary><div class="advanced"><label>最大横幅 <select id="output-width"><option value="620">620 px</option><option value="560">560 px</option><option value="520">520 px</option><option value="420">420 px</option><option value="320">320 px</option></select></label><label>フレームレート <select id="output-fps"><option value="10">10 fps</option><option value="8">8 fps</option><option value="7">7 fps</option><option value="5">5 fps</option></select></label><label>色数 <select id="output-colors"><option value="128">128 色</option><option value="256">256 色</option><option value="96">96 色</option><option value="64">64 色</option></select></label><label class="checkbox"><input id="upscale-crop" type="checkbox" />小さく切り抜いた範囲を指定横幅まで拡大</label></div></details>
+          <button id="convert" class="primary convert" type="button">note用GIFを作る <span aria-hidden="true">→</span></button><p class="hint center">ファイルはこの端末の中で処理されます。</p>
+        </aside></div>
+      </fieldset>
+      <section id="result" class="result" hidden aria-labelledby="result-heading"><div class="result-heading"><span class="success-icon" aria-hidden="true">✓</span><div><p class="eyebrow">READY FOR YOUR STORY</p><h2 id="result-heading">note向けGIFが完成しました</h2></div></div><div class="result-grid"><div class="result-preview"><img id="result-image" alt="変換したGIFのループプレビュー" /></div><div class="result-summary"><dl id="result-stats"></dl><p id="result-note"></p><a id="download" class="primary" download>GIFを保存 <span aria-hidden="true">↓</span></a><p class="hint">保存したGIFをnoteの記事本文に追加できます。</p></div></div></section>
+      <section id="features" class="features" aria-label="GIFnoteの特徴"><article><span>01 / SELECT</span><h2>好きな一瞬を。</h2><p id="feature-duration"></p></article><article><span>02 / FRAME</span><h2>見せたいところだけ。</h2><p>余白や不要な部分を切り抜いて、<br />伝えたい動きにフォーカス。</p></article><article><span>03 / FIT</span><h2>サイズは、おまかせ。</h2><p>横幅・なめらかさ・容量を調整。<br />記事に載せやすいGIFに仕上げます。</p></article></section>
+    </main>
+    <footer><span>GIFnote <span class="muted">/ 小さな動きで、もっと伝わる。</span></span><nav class="footer-links" aria-label="サイト情報"><a href="https://github.com/riosagg/gifnote" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><a href="./license/">License</a><a href="./licenses/">Third-party licenses</a><a href="./disclaimer/">免責事項</a><a href="./privacy/">プライバシー</a><span>note非公式ツール</span></nav></footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

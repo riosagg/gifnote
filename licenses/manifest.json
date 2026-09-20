@@ -1,0 +1,722 @@
+{
+  "schemaVersion": 1,
+  "packages": {
+    "@ffmpeg/core": "0.12.10",
+    "@ffmpeg/ffmpeg": "0.12.15",
+    "gifuct-js": "2.1.2",
+    "js-binary-schema-parser": "2.0.3",
+    "vite": "7.3.6"
+  },
+  "components": [
+    {
+      "id": "ffmpeg-wasm",
+      "name": "ffmpeg.wasm build/bindings",
+      "version": "core 0.12.10 / wrapper 0.12.15",
+      "license": "MIT (wrapper/bindings); LGPL-2.1-or-later (FFmpeg-derived frontend); combined core GPL-2.0-or-later",
+      "copyright": "Copyright (c) 2019 Jerome Wu; FFmpeg-derived frontend: individual FFmpeg authors (see source headers).",
+      "upstream": "https://github.com/ffmpegwasm/ffmpeg.wasm/tree/71aa99d37c02a7b4c435275ca9ef50e612f6efa1",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "MIT wrapper、core bindings、上流で変更されたFFmpeg frontendとビルド定義。",
+      "archive": "archives/ffmpeg-wasm-71aa99d37c02a7b4c435275ca9ef50e612f6efa1.tgz",
+      "documents": [
+        {
+          "path": "ffmpeg-wasm/LICENSE.txt",
+          "upstream": "https://github.com/ffmpegwasm/ffmpeg.wasm/blob/71aa99d37c02a7b4c435275ca9ef50e612f6efa1/LICENSE",
+          "sha256": "3e123e29517d76504ffce77b3f8e2ccffd4712493f27694b0aba3e376676459f"
+        },
+        {
+          "path": "ffmpeg-wasm/Dockerfile.txt",
+          "upstream": "https://github.com/ffmpegwasm/ffmpeg.wasm/blob/71aa99d37c02a7b4c435275ca9ef50e612f6efa1/Dockerfile",
+          "sha256": "2501ef0a2c0a374b7e575160fb3d203cb36e698f5d72f963c70f050f02bb7dee"
+        },
+        {
+          "path": "ffmpeg-wasm/build__ffmpeg.sh.txt",
+          "upstream": "https://github.com/ffmpegwasm/ffmpeg.wasm/blob/71aa99d37c02a7b4c435275ca9ef50e612f6efa1/build/ffmpeg.sh",
+          "sha256": "be107d2237b61ad301b488954e25c42cdae9e198ff4398b4a3455a3ccc2192bc"
+        },
+        {
+          "path": "ffmpeg-wasm/build__ffmpeg-wasm.sh.txt",
+          "upstream": "https://github.com/ffmpegwasm/ffmpeg.wasm/blob/71aa99d37c02a7b4c435275ca9ef50e612f6efa1/build/ffmpeg-wasm.sh",
+          "sha256": "ed4cf14aad203491345b3da7ab5711bb70df1a483afd13837bb174d9b8ac8658"
+        },
+        {
+          "path": "ffmpeg-wasm/Makefile.txt",
+          "upstream": "https://github.com/ffmpegwasm/ffmpeg.wasm/blob/71aa99d37c02a7b4c435275ca9ef50e612f6efa1/Makefile",
+          "sha256": "ce971124b4fe6699a5b9bb7f55bdb67c53a61863a721834b5552ce8e3daaeb37"
+        },
+        {
+          "path": "ffmpeg-wasm/build__harfbuzz.sh.txt",
+          "upstream": "https://github.com/ffmpegwasm/ffmpeg.wasm/blob/71aa99d37c02a7b4c435275ca9ef50e612f6efa1/build/harfbuzz.sh",
+          "sha256": "24595ec8a4921ed46c1f0f2ae367051cbe0531f9fe7140e4b3798b9132e8b301"
+        },
+        {
+          "path": "ffmpeg-wasm/src__fftools__ffmpeg.c.txt",
+          "upstream": "https://github.com/ffmpegwasm/ffmpeg.wasm/blob/71aa99d37c02a7b4c435275ca9ef50e612f6efa1/src/fftools/ffmpeg.c",
+          "sha256": "9399dc54362522dbc8fc4d3712b04c0e9621af3e46e5593ad8f904310dda301a"
+        },
+        {
+          "path": "ffmpeg-wasm/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/ffmpegwasm/ffmpeg.wasm/tree/71aa99d37c02a7b4c435275ca9ef50e612f6efa1",
+          "sha256": "63ece9f65bfc1082a93c351e97921cdb7644eb44d73b76265843c1e74e3711ec"
+        }
+      ]
+    },
+    {
+      "id": "ffmpeg",
+      "name": "FFmpeg",
+      "version": "5.1.4",
+      "license": "GPL-2.0-or-later for this --enable-gpl build; component notices also apply",
+      "copyright": "Copyright (c) 2000-2023 the FFmpeg developers; individual files retain their authors and years. IJG-derived code: Thomas G. Lane and other authors in the accompanying files.",
+      "upstream": "https://github.com/FFmpeg/FFmpeg/tree/4729204c17f756e186d622060088371d10b34f7e",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "配信coreのリンク対象（全codecをGIFnoteのUIから利用するとは限らない）。",
+      "archive": "archives/ffmpeg-4729204c17f756e186d622060088371d10b34f7e.tgz",
+      "documents": [
+        {
+          "path": "ffmpeg/LICENSE.md.txt",
+          "upstream": "https://github.com/FFmpeg/FFmpeg/blob/4729204c17f756e186d622060088371d10b34f7e/LICENSE.md",
+          "sha256": "cb48bf09a11f5fb576cddb0431c8f5ed0a60157a9ec942adffc13907cbe083f2"
+        },
+        {
+          "path": "ffmpeg/COPYING.GPLv2.txt",
+          "upstream": "https://github.com/FFmpeg/FFmpeg/blob/4729204c17f756e186d622060088371d10b34f7e/COPYING.GPLv2",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "ffmpeg/COPYING.LGPLv2.1.txt",
+          "upstream": "https://github.com/FFmpeg/FFmpeg/blob/4729204c17f756e186d622060088371d10b34f7e/COPYING.LGPLv2.1",
+          "sha256": "b634ab5640e258563c536e658cad87080553df6f34f62269a21d554844e58bfe"
+        },
+        {
+          "path": "ffmpeg/libavcodec__jfdctfst.c.txt",
+          "upstream": "https://github.com/FFmpeg/FFmpeg/blob/4729204c17f756e186d622060088371d10b34f7e/libavcodec/jfdctfst.c",
+          "sha256": "25e90f922213dac2fb03ccd9b7b5d97ce0393512fe25414fda0185f89c098932"
+        },
+        {
+          "path": "ffmpeg/libavcodec__jfdctint_template.c.txt",
+          "upstream": "https://github.com/FFmpeg/FFmpeg/blob/4729204c17f756e186d622060088371d10b34f7e/libavcodec/jfdctint_template.c",
+          "sha256": "732e060f7d8d1e11d00957765cf017bfdfc500f412fca0d3cd71e68456023f4c"
+        },
+        {
+          "path": "ffmpeg/libavcodec__jrevdct.c.txt",
+          "upstream": "https://github.com/FFmpeg/FFmpeg/blob/4729204c17f756e186d622060088371d10b34f7e/libavcodec/jrevdct.c",
+          "sha256": "d7d5e0b1ffed3328700c3a446bc8d4243b37e9efad13a84f3333290d7128d13f"
+        },
+        {
+          "path": "ffmpeg/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/FFmpeg/FFmpeg/tree/4729204c17f756e186d622060088371d10b34f7e",
+          "sha256": "725bc1cf540fef31e14c69ba7900efcfda2a660785c2cd9eebb5a2bad84bfcf8"
+        }
+      ]
+    },
+    {
+      "id": "x264",
+      "name": "x264",
+      "version": "4-cores fork",
+      "license": "GPL-2.0-or-later",
+      "copyright": "Copyright (C) 2003-2022 x264 project; individual source notices retained.",
+      "upstream": "https://github.com/ffmpegwasm/x264/tree/33cac6b77d5b9259c552156013a817ab23119612",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "配信coreのリンク対象（全codecをGIFnoteのUIから利用するとは限らない）。",
+      "archive": "archives/x264-33cac6b77d5b9259c552156013a817ab23119612.tgz",
+      "documents": [
+        {
+          "path": "x264/COPYING.txt",
+          "upstream": "https://github.com/ffmpegwasm/x264/blob/33cac6b77d5b9259c552156013a817ab23119612/COPYING",
+          "sha256": "32b1062f7da84967e7019d01ab805935caa7ab7321a7ced0e30ebe75e5df1670"
+        },
+        {
+          "path": "x264/x264.h.txt",
+          "upstream": "https://github.com/ffmpegwasm/x264/blob/33cac6b77d5b9259c552156013a817ab23119612/x264.h",
+          "sha256": "c585f3c245b4d84a6e80bc18e79d928941a0d68851d66ef417ec1656f877dc3f"
+        },
+        {
+          "path": "x264/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/ffmpegwasm/x264/tree/33cac6b77d5b9259c552156013a817ab23119612",
+          "sha256": "720d920c99b89b140d0450150f6724ba2b9f26f74bfea4389b93aeb9a53d9440"
+        }
+      ]
+    },
+    {
+      "id": "x265",
+      "name": "x265",
+      "version": "3.4",
+      "license": "GPL-2.0-or-later",
+      "copyright": "Copyright (C) 2013-2020 MulticoreWare, Inc.; individual source notices retained.",
+      "upstream": "https://github.com/ffmpegwasm/x265/tree/2bb5520e9596f361bf0ed81b3b8da0d7fd999069",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "配信coreのリンク対象（全codecをGIFnoteのUIから利用するとは限らない）。",
+      "archive": "archives/x265-2bb5520e9596f361bf0ed81b3b8da0d7fd999069.tgz",
+      "documents": [
+        {
+          "path": "x265/COPYING.txt",
+          "upstream": "https://github.com/ffmpegwasm/x265/blob/2bb5520e9596f361bf0ed81b3b8da0d7fd999069/COPYING",
+          "sha256": "d8afb1bcc7a2cfc603683b168d6987ef0a48e59e0da3693bf55c5d33b67e2b49"
+        },
+        {
+          "path": "x265/source__x265.h.txt",
+          "upstream": "https://github.com/ffmpegwasm/x265/blob/2bb5520e9596f361bf0ed81b3b8da0d7fd999069/source/x265.h",
+          "sha256": "a6b9d50c110142b6dd19f8c70a2b74bfdab5b10ff31767c2108e3660fa0346d5"
+        },
+        {
+          "path": "x265/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/ffmpegwasm/x265/tree/2bb5520e9596f361bf0ed81b3b8da0d7fd999069",
+          "sha256": "5feee3efb9c6983128a34f8730a4bc7a4413772eec1b7e5831b58ba7dd6c53b4"
+        }
+      ]
+    },
+    {
+      "id": "libvpx",
+      "name": "libvpx",
+      "version": "1.13.1",
+      "license": "BSD-3-Clause; patent and bundled-code notices",
+      "copyright": "Copyright (c) 2010, The WebM Project authors. All rights reserved.",
+      "upstream": "https://github.com/ffmpegwasm/libvpx/tree/10b9492dcf05b652e2e4b370e205bd605d421972",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "配信coreのリンク対象（全codecをGIFnoteのUIから利用するとは限らない）。",
+      "archive": "archives/libvpx-10b9492dcf05b652e2e4b370e205bd605d421972.tgz",
+      "documents": [
+        {
+          "path": "libvpx/LICENSE.txt",
+          "upstream": "https://github.com/ffmpegwasm/libvpx/blob/10b9492dcf05b652e2e4b370e205bd605d421972/LICENSE",
+          "sha256": "8267348d5af1262c11d1a08de2f5afc77457755f1ac658627dd9acf71011d615"
+        },
+        {
+          "path": "libvpx/PATENTS.txt",
+          "upstream": "https://github.com/ffmpegwasm/libvpx/blob/10b9492dcf05b652e2e4b370e205bd605d421972/PATENTS",
+          "sha256": "cc3273e0694ea5896145e0677699b53471b03ea43021ddc50e7923fbb9f5023c"
+        },
+        {
+          "path": "libvpx/AUTHORS.txt",
+          "upstream": "https://github.com/ffmpegwasm/libvpx/blob/10b9492dcf05b652e2e4b370e205bd605d421972/AUTHORS",
+          "sha256": "feafebb104c3fc8b268224b5399a176370590717acb89f853885f12d565161ce"
+        },
+        {
+          "path": "libvpx/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/ffmpegwasm/libvpx/tree/10b9492dcf05b652e2e4b370e205bd605d421972",
+          "sha256": "8afb808ef80e044c266ba6c5f6b143a7f62b04b483946e43c2edb531939f7962"
+        }
+      ]
+    },
+    {
+      "id": "lame",
+      "name": "LAME",
+      "version": "3.100 fork",
+      "license": "LGPL-2.0-or-later",
+      "copyright": "Copyright (c) 1999 Mark Taylor (lame.h); additional authors and years in individual files.",
+      "upstream": "https://github.com/ffmpegwasm/lame/tree/2badea1974ae36cb8312afe99cff1e6b3b5decee",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "配信coreのリンク対象（全codecをGIFnoteのUIから利用するとは限らない）。",
+      "archive": "archives/lame-2badea1974ae36cb8312afe99cff1e6b3b5decee.tgz",
+      "documents": [
+        {
+          "path": "lame/COPYING.txt",
+          "upstream": "https://github.com/ffmpegwasm/lame/blob/2badea1974ae36cb8312afe99cff1e6b3b5decee/COPYING",
+          "sha256": "bfe4a52dc4645385f356a8e83cc54216a293e3b6f1cb4f79f5fc0277abf937fd"
+        },
+        {
+          "path": "lame/include__lame.h.txt",
+          "upstream": "https://github.com/ffmpegwasm/lame/blob/2badea1974ae36cb8312afe99cff1e6b3b5decee/include/lame.h",
+          "sha256": "b30e4d3f5bb247bad2781758d90604f29cc44dd5bd79fee130aaef7c7d25bcf0"
+        },
+        {
+          "path": "lame/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/ffmpegwasm/lame/tree/2badea1974ae36cb8312afe99cff1e6b3b5decee",
+          "sha256": "5561a55b04304ff98b6a0c51799497a087186227fed7426e83d61b7a7fc887f6"
+        }
+      ]
+    },
+    {
+      "id": "ogg",
+      "name": "libogg",
+      "version": "1.3.4",
+      "license": "BSD-3-Clause",
+      "copyright": "Copyright (c) 2002, Xiph.org Foundation",
+      "upstream": "https://github.com/ffmpegwasm/Ogg/tree/bada45718453ac27b56773ae663f7e65112f6a6e",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "配信coreのリンク対象（全codecをGIFnoteのUIから利用するとは限らない）。",
+      "archive": "archives/ogg-bada45718453ac27b56773ae663f7e65112f6a6e.tgz",
+      "documents": [
+        {
+          "path": "ogg/COPYING.txt",
+          "upstream": "https://github.com/ffmpegwasm/Ogg/blob/bada45718453ac27b56773ae663f7e65112f6a6e/COPYING",
+          "sha256": "d2ab5758336489da61c12cc5bb757da5339c4ae9001f9bb0562b4370249af814"
+        },
+        {
+          "path": "ogg/AUTHORS.txt",
+          "upstream": "https://github.com/ffmpegwasm/Ogg/blob/bada45718453ac27b56773ae663f7e65112f6a6e/AUTHORS",
+          "sha256": "6fcb33d0cdd60b5054e7df820916388b590427514288c2bab01c626bb8ae9506"
+        },
+        {
+          "path": "ogg/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/ffmpegwasm/Ogg/tree/bada45718453ac27b56773ae663f7e65112f6a6e",
+          "sha256": "6376eb9ffc65071f6abb2937532eb4831c8dd30d96ab5113b4e40489d93fa655"
+        }
+      ]
+    },
+    {
+      "id": "theora",
+      "name": "libtheora",
+      "version": "1.1.1",
+      "license": "BSD-3-Clause",
+      "copyright": "Copyright (C) 2002-2009 Xiph.org Foundation",
+      "upstream": "https://github.com/ffmpegwasm/theora/tree/7ffd8b2ecfc2d93ae5e16028e7528e609266bfbf",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "配信coreのリンク対象（全codecをGIFnoteのUIから利用するとは限らない）。",
+      "archive": "archives/theora-7ffd8b2ecfc2d93ae5e16028e7528e609266bfbf.tgz",
+      "documents": [
+        {
+          "path": "theora/COPYING.txt",
+          "upstream": "https://github.com/ffmpegwasm/theora/blob/7ffd8b2ecfc2d93ae5e16028e7528e609266bfbf/COPYING",
+          "sha256": "8417fad7da775735564e209484a2e011e0fa201e94f01fdbee6e4977e478e6fc"
+        },
+        {
+          "path": "theora/LICENSE.txt",
+          "upstream": "https://github.com/ffmpegwasm/theora/blob/7ffd8b2ecfc2d93ae5e16028e7528e609266bfbf/LICENSE",
+          "sha256": "654a0238f789f4435c4818f50005b141d013c5a09a31d861efc1d0d67ba975a4"
+        },
+        {
+          "path": "theora/AUTHORS.txt",
+          "upstream": "https://github.com/ffmpegwasm/theora/blob/7ffd8b2ecfc2d93ae5e16028e7528e609266bfbf/AUTHORS",
+          "sha256": "76ce13651678372266b233e026810a368e2cf0a0d255d19805d268d80ac1dbcd"
+        },
+        {
+          "path": "theora/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/ffmpegwasm/theora/tree/7ffd8b2ecfc2d93ae5e16028e7528e609266bfbf",
+          "sha256": "c82be5b26b5c90fb5d3868c889be9a82d10bc1120ca22edfd20c783a197d04ee"
+        }
+      ]
+    },
+    {
+      "id": "vorbis",
+      "name": "libvorbis",
+      "version": "1.3.3",
+      "license": "BSD-3-Clause",
+      "copyright": "Copyright (c) 2002-2008 Xiph.org Foundation",
+      "upstream": "https://github.com/ffmpegwasm/vorbis/tree/7798164043197d7e33f02de4353ce2aa5b248225",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "配信coreのリンク対象（全codecをGIFnoteのUIから利用するとは限らない）。",
+      "archive": "archives/vorbis-7798164043197d7e33f02de4353ce2aa5b248225.tgz",
+      "documents": [
+        {
+          "path": "vorbis/COPYING.txt",
+          "upstream": "https://github.com/ffmpegwasm/vorbis/blob/7798164043197d7e33f02de4353ce2aa5b248225/COPYING",
+          "sha256": "414bfd5d8ee64395a9231d6386188461500052c10915bee08b18bfa9489dd0b3"
+        },
+        {
+          "path": "vorbis/AUTHORS.txt",
+          "upstream": "https://github.com/ffmpegwasm/vorbis/blob/7798164043197d7e33f02de4353ce2aa5b248225/AUTHORS",
+          "sha256": "f5cab9f16035f770f50299f85cf2938c06dc3a9a30425961067788102ec896d3"
+        },
+        {
+          "path": "vorbis/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/ffmpegwasm/vorbis/tree/7798164043197d7e33f02de4353ce2aa5b248225",
+          "sha256": "966f46ca0c8ac89544fcb233ffcf78a949a3a3b9d72f62f10026e836277ac042"
+        }
+      ]
+    },
+    {
+      "id": "opus",
+      "name": "Opus",
+      "version": "1.3.1",
+      "license": "BSD-3-Clause; patent grants",
+      "copyright": "Copyright 2001-2011 Xiph.Org, Skype Limited, Octasic, Jean-Marc Valin, Timothy B. Terriberry, CSIRO, Gregory Maxwell, Mark Borgerding, Erik de Castro Lopo",
+      "upstream": "https://github.com/ffmpegwasm/opus/tree/e85ed7726db5d677c9c0677298ea0cb9c65bdd23",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "配信coreのリンク対象（全codecをGIFnoteのUIから利用するとは限らない）。",
+      "archive": "archives/opus-e85ed7726db5d677c9c0677298ea0cb9c65bdd23.tgz",
+      "documents": [
+        {
+          "path": "opus/COPYING.txt",
+          "upstream": "https://github.com/ffmpegwasm/opus/blob/e85ed7726db5d677c9c0677298ea0cb9c65bdd23/COPYING",
+          "sha256": "8338ce8d922bb4416ce3dd1e5680173332435e3f0755007ac7801ccd674fe682"
+        },
+        {
+          "path": "opus/AUTHORS.txt",
+          "upstream": "https://github.com/ffmpegwasm/opus/blob/e85ed7726db5d677c9c0677298ea0cb9c65bdd23/AUTHORS",
+          "sha256": "f9fd849e652219ce98e008303370b352d37663d0ffb27b8dc514ad93c9c7438b"
+        },
+        {
+          "path": "opus/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/ffmpegwasm/opus/tree/e85ed7726db5d677c9c0677298ea0cb9c65bdd23",
+          "sha256": "42fbd4939e1fb77d67bde2116ff051a755f4b1b13edba4dd693eaec2a1329b79"
+        }
+      ]
+    },
+    {
+      "id": "zlib",
+      "name": "zlib",
+      "version": "1.2.11",
+      "license": "Zlib",
+      "copyright": "Copyright (C) 1995-2017 Jean-loup Gailly and Mark Adler",
+      "upstream": "https://github.com/ffmpegwasm/zlib/tree/cacf7f1d4e3d44d871b605da3b647f07d718623f",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "配信coreのリンク対象（全codecをGIFnoteのUIから利用するとは限らない）。",
+      "archive": "archives/zlib-cacf7f1d4e3d44d871b605da3b647f07d718623f.tgz",
+      "documents": [
+        {
+          "path": "zlib/README.txt",
+          "upstream": "https://github.com/ffmpegwasm/zlib/blob/cacf7f1d4e3d44d871b605da3b647f07d718623f/README",
+          "sha256": "7960b6b1cc63e619abb77acaea5427159605afee8c8b362664f4effc7d7f7d15"
+        },
+        {
+          "path": "zlib/zlib.h.txt",
+          "upstream": "https://github.com/ffmpegwasm/zlib/blob/cacf7f1d4e3d44d871b605da3b647f07d718623f/zlib.h",
+          "sha256": "4ddc82b4af931ab55f44d977bde81bfbc4151b5dcdccc03142831a301b5ec3c8"
+        },
+        {
+          "path": "zlib/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/ffmpegwasm/zlib/tree/cacf7f1d4e3d44d871b605da3b647f07d718623f",
+          "sha256": "406cff7a3ef273776a5f6a0df9e09c8c41b56497a98328d1536207868c0916f3"
+        }
+      ]
+    },
+    {
+      "id": "webp",
+      "name": "libwebp / libsharpyuv",
+      "version": "1.3.2",
+      "license": "BSD-3-Clause; patent grant",
+      "copyright": "Copyright (c) 2010, Google Inc. All rights reserved.",
+      "upstream": "https://github.com/ffmpegwasm/libwebp/tree/ca332209cb5567c9b249c86788cb2dbf8847e760",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "配信coreのリンク対象（全codecをGIFnoteのUIから利用するとは限らない）。",
+      "archive": "archives/webp-ca332209cb5567c9b249c86788cb2dbf8847e760.tgz",
+      "documents": [
+        {
+          "path": "webp/COPYING.txt",
+          "upstream": "https://github.com/ffmpegwasm/libwebp/blob/ca332209cb5567c9b249c86788cb2dbf8847e760/COPYING",
+          "sha256": "5aec868f669e384a22372a4e8a1a6cd7d44c64cd451f960ca69cc170d1e13acf"
+        },
+        {
+          "path": "webp/PATENTS.txt",
+          "upstream": "https://github.com/ffmpegwasm/libwebp/blob/ca332209cb5567c9b249c86788cb2dbf8847e760/PATENTS",
+          "sha256": "cc3273e0694ea5896145e0677699b53471b03ea43021ddc50e7923fbb9f5023c"
+        },
+        {
+          "path": "webp/AUTHORS.txt",
+          "upstream": "https://github.com/ffmpegwasm/libwebp/blob/ca332209cb5567c9b249c86788cb2dbf8847e760/AUTHORS",
+          "sha256": "9f43aafb76998315d1eac1e441fbd8e1edc28107a7d28ae26223d258f577e84a"
+        },
+        {
+          "path": "webp/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/ffmpegwasm/libwebp/tree/ca332209cb5567c9b249c86788cb2dbf8847e760",
+          "sha256": "0260683f0a53a4d3e4f63ee28bf6e9f5c4c3814b105b675ea2f96497a75deb93"
+        }
+      ]
+    },
+    {
+      "id": "freetype",
+      "name": "FreeType",
+      "version": "2.10.4",
+      "license": "GPL-2.0-or-later selected for this GPLv2-compatible distribution; FTL alternative and other notices retained",
+      "copyright": "The FreeType Project authors; David Turner, Robert Wilhelm, Werner Lemberg and per-file contributors (years and full notices retained in source).",
+      "upstream": "https://github.com/ffmpegwasm/freetype2/tree/6a2b3e4007e794bfc6c91030d0ed987f925164a8",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "配信coreのリンク対象（全codecをGIFnoteのUIから利用するとは限らない）。",
+      "archive": "archives/freetype-6a2b3e4007e794bfc6c91030d0ed987f925164a8.tgz",
+      "documents": [
+        {
+          "path": "freetype/docs__LICENSE.TXT.txt",
+          "upstream": "https://github.com/ffmpegwasm/freetype2/blob/6a2b3e4007e794bfc6c91030d0ed987f925164a8/docs/LICENSE.TXT",
+          "sha256": "fd056de4196903a676208ef58cfddafc7d583d1f28fa2e44c309cf84a59e62fb"
+        },
+        {
+          "path": "freetype/docs__GPLv2.TXT.txt",
+          "upstream": "https://github.com/ffmpegwasm/freetype2/blob/6a2b3e4007e794bfc6c91030d0ed987f925164a8/docs/GPLv2.TXT",
+          "sha256": "c4120c6752c910c299e3bd9cb3a46ff262c268303ca2069b61f92f10a5656c18"
+        },
+        {
+          "path": "freetype/docs__FTL.TXT.txt",
+          "upstream": "https://github.com/ffmpegwasm/freetype2/blob/6a2b3e4007e794bfc6c91030d0ed987f925164a8/docs/FTL.TXT",
+          "sha256": "08c135755dd589039470f1fdbb400daaabaaa50d0b366d19cebff4d22986baa1"
+        },
+        {
+          "path": "freetype/src__bdf__README.txt",
+          "upstream": "https://github.com/ffmpegwasm/freetype2/blob/6a2b3e4007e794bfc6c91030d0ed987f925164a8/src/bdf/README",
+          "sha256": "46a6b868ce86a88b7485a0ac88408c1111996ee93172bc7c11219c1af17084fe"
+        },
+        {
+          "path": "freetype/src__pcf__README.txt",
+          "upstream": "https://github.com/ffmpegwasm/freetype2/blob/6a2b3e4007e794bfc6c91030d0ed987f925164a8/src/pcf/README",
+          "sha256": "18d9782898d9eac04476e2f744678137b2a889689ed3e923e052fc396a86f86b"
+        },
+        {
+          "path": "freetype/src__gzip__zlib.h.txt",
+          "upstream": "https://github.com/ffmpegwasm/freetype2/blob/6a2b3e4007e794bfc6c91030d0ed987f925164a8/src/gzip/zlib.h",
+          "sha256": "cbea6fd5786004f24ffe1ba9897716bdc6e40b7d14229ca7886c21069a9c5f85"
+        },
+        {
+          "path": "freetype/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/ffmpegwasm/freetype2/tree/6a2b3e4007e794bfc6c91030d0ed987f925164a8",
+          "sha256": "20b5d8afccb44cfceaf285a81346a1d2dd713363f364a153c18eb2ed65a10c61"
+        }
+      ]
+    },
+    {
+      "id": "fribidi",
+      "name": "FriBidi",
+      "version": "1.0.9",
+      "license": "LGPL-2.1-or-later",
+      "copyright": "Copyright (C) 2004 Sharif FarsiWeb, Inc (fribidi.h); additional authors in AUTHORS and source.",
+      "upstream": "https://github.com/fribidi/fribidi/tree/f9e8e71a6fbf4a4619481284c9f484d10e559995",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "配信coreのリンク対象（全codecをGIFnoteのUIから利用するとは限らない）。",
+      "archive": "archives/fribidi-f9e8e71a6fbf4a4619481284c9f484d10e559995.tgz",
+      "documents": [
+        {
+          "path": "fribidi/COPYING.txt",
+          "upstream": "https://github.com/fribidi/fribidi/blob/f9e8e71a6fbf4a4619481284c9f484d10e559995/COPYING",
+          "sha256": "32434afcc8666ba060e111d715bfdb6c2d5dd8a35fa4d3ab8ad67d8f850d2f2b"
+        },
+        {
+          "path": "fribidi/AUTHORS.txt",
+          "upstream": "https://github.com/fribidi/fribidi/blob/f9e8e71a6fbf4a4619481284c9f484d10e559995/AUTHORS",
+          "sha256": "cb173f55c9514c8f38f4647ac3fedd5f8611358d331e65ab955da931e826861c"
+        },
+        {
+          "path": "fribidi/lib__fribidi.h.txt",
+          "upstream": "https://github.com/fribidi/fribidi/blob/f9e8e71a6fbf4a4619481284c9f484d10e559995/lib/fribidi.h",
+          "sha256": "c492bd572e59560adbe3bd5450b679e31c86457b3d6bcdfae81a1dfc777fea54"
+        },
+        {
+          "path": "fribidi/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/fribidi/fribidi/tree/f9e8e71a6fbf4a4619481284c9f484d10e559995",
+          "sha256": "c994edde536f7594e105b8a10e70928c4060bbb1976714464f2d2bc283604331"
+        }
+      ]
+    },
+    {
+      "id": "harfbuzz",
+      "name": "HarfBuzz",
+      "version": "5.2.0",
+      "license": "Old MIT (MIT-like), with component-specific notices",
+      "copyright": "Google, Ebrahim Byagowi, Facebook, Mozilla, Codethink, Nokia, Keith Stribley, Martin Hosken/SIL, Chris Wilson, Behdad Esfahbod, David Turner, Red Hat, Werner Lemberg; full years and notices in COPYING.",
+      "upstream": "https://github.com/harfbuzz/harfbuzz/tree/4a1d891c6317d2c83e5f3c2607ec5f5ccedffcde",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "配信coreのリンク対象（全codecをGIFnoteのUIから利用するとは限らない）。",
+      "archive": "archives/harfbuzz-4a1d891c6317d2c83e5f3c2607ec5f5ccedffcde.tgz",
+      "documents": [
+        {
+          "path": "harfbuzz/COPYING.txt",
+          "upstream": "https://github.com/harfbuzz/harfbuzz/blob/4a1d891c6317d2c83e5f3c2607ec5f5ccedffcde/COPYING",
+          "sha256": "4345e1735f8bc6d812fed5180cabb5a5e88a4109d332652f2a45c13cfa5ee692"
+        },
+        {
+          "path": "harfbuzz/AUTHORS.txt",
+          "upstream": "https://github.com/harfbuzz/harfbuzz/blob/4a1d891c6317d2c83e5f3c2607ec5f5ccedffcde/AUTHORS",
+          "sha256": "19bfe8f5ed100636cd24ab0c90a3f71c21d8b02d9ba00719447a0faab364d49f"
+        },
+        {
+          "path": "harfbuzz/src__ms-use__COPYING.txt",
+          "upstream": "https://github.com/harfbuzz/harfbuzz/blob/4a1d891c6317d2c83e5f3c2607ec5f5ccedffcde/src/ms-use/COPYING",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+        },
+        {
+          "path": "harfbuzz/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/harfbuzz/harfbuzz/tree/4a1d891c6317d2c83e5f3c2607ec5f5ccedffcde",
+          "sha256": "8b0b0efbfa17a156e816043c2c6523f2d8190742b16a9c0e5230564556c51799"
+        }
+      ]
+    },
+    {
+      "id": "libass",
+      "name": "libass",
+      "version": "0.15.0",
+      "license": "ISC",
+      "copyright": "Copyright (C) 2006-2016 libass contributors",
+      "upstream": "https://github.com/libass/libass/tree/d149636f502f5774ae1a8fb4c554b122674393b2",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "配信coreのリンク対象（全codecをGIFnoteのUIから利用するとは限らない）。",
+      "archive": "archives/libass-d149636f502f5774ae1a8fb4c554b122674393b2.tgz",
+      "documents": [
+        {
+          "path": "libass/COPYING.txt",
+          "upstream": "https://github.com/libass/libass/blob/d149636f502f5774ae1a8fb4c554b122674393b2/COPYING",
+          "sha256": "f7e30699d02798351e7f839e3d3bfeb29ce65e44efa7735c225464c4fd7dfe9c"
+        },
+        {
+          "path": "libass/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/libass/libass/tree/d149636f502f5774ae1a8fb4c554b122674393b2",
+          "sha256": "0b4622eec4b10aa720a858c87a9ceb2c2a459bae232ad37f4d889abff584eedd"
+        }
+      ]
+    },
+    {
+      "id": "zimg",
+      "name": "zimg",
+      "version": "3.0.5",
+      "license": "WTFPL-2.0; component notices",
+      "copyright": "zimg contributors; per-file notices in the source. COPYING copyright (C) 2004 Sam Hocevar applies to the license text.",
+      "upstream": "https://github.com/sekrit-twc/zimg/tree/e5b0de6bebbcbc66732ed5afaafef6b2c7dfef87",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "配信coreのリンク対象（全codecをGIFnoteのUIから利用するとは限らない）。",
+      "archive": "archives/zimg-e5b0de6bebbcbc66732ed5afaafef6b2c7dfef87.tgz",
+      "documents": [
+        {
+          "path": "zimg/COPYING.txt",
+          "upstream": "https://github.com/sekrit-twc/zimg/blob/e5b0de6bebbcbc66732ed5afaafef6b2c7dfef87/COPYING",
+          "sha256": "7637386b5f81e8a719ca336233149005e5fa28b5e6054ea7b67de49355b0ad40"
+        }
+      ]
+    },
+    {
+      "id": "emscripten",
+      "name": "Emscripten runtime / system libraries",
+      "version": "3.1.40",
+      "license": "MIT selected for Emscripten-owned runtime; musl, LLVM/compiler-rt/libc++ and other embedded notices apply separately",
+      "copyright": "Copyright (c) 2010-2014 Emscripten authors; musl: Copyright © 2005-2020 Rich Felker, et al.; LLVM and other system library contributors (individual notices retained).",
+      "upstream": "https://github.com/emscripten-core/emscripten/tree/5c27e79dd0a9c4e27ef2326841698cdd4f6b5784",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "coreのJS/runtimeおよびC/C++システムライブラリ。個別ファイルのリンク有無は未確定。",
+      "archive": "archives/emscripten-5c27e79dd0a9c4e27ef2326841698cdd4f6b5784.tgz",
+      "documents": [
+        {
+          "path": "emscripten/LICENSE.txt",
+          "upstream": "https://github.com/emscripten-core/emscripten/blob/5c27e79dd0a9c4e27ef2326841698cdd4f6b5784/LICENSE",
+          "sha256": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86"
+        },
+        {
+          "path": "emscripten/AUTHORS.txt",
+          "upstream": "https://github.com/emscripten-core/emscripten/blob/5c27e79dd0a9c4e27ef2326841698cdd4f6b5784/AUTHORS",
+          "sha256": "01f19acf8680713c8c4396ce01df9fa988e7389aede5c5fe7b1bc21ad57e2544"
+        },
+        {
+          "path": "emscripten/system__lib__compiler-rt__LICENSE.TXT.txt",
+          "upstream": "https://github.com/emscripten-core/emscripten/blob/5c27e79dd0a9c4e27ef2326841698cdd4f6b5784/system/lib/compiler-rt/LICENSE.TXT",
+          "sha256": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d"
+        },
+        {
+          "path": "emscripten/system__lib__libc__musl__COPYRIGHT.txt",
+          "upstream": "https://github.com/emscripten-core/emscripten/blob/5c27e79dd0a9c4e27ef2326841698cdd4f6b5784/system/lib/libc/musl/COPYRIGHT",
+          "sha256": "f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af"
+        },
+        {
+          "path": "emscripten/system__lib__libcxx__LICENSE.TXT.txt",
+          "upstream": "https://github.com/emscripten-core/emscripten/blob/5c27e79dd0a9c4e27ef2326841698cdd4f6b5784/system/lib/libcxx/LICENSE.TXT",
+          "sha256": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b"
+        },
+        {
+          "path": "emscripten/system__lib__libcxxabi__LICENSE.TXT.txt",
+          "upstream": "https://github.com/emscripten-core/emscripten/blob/5c27e79dd0a9c4e27ef2326841698cdd4f6b5784/system/lib/libcxxabi/LICENSE.TXT",
+          "sha256": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c"
+        },
+        {
+          "path": "emscripten/system__lib__libunwind__LICENSE.TXT.txt",
+          "upstream": "https://github.com/emscripten-core/emscripten/blob/5c27e79dd0a9c4e27ef2326841698cdd4f6b5784/system/lib/libunwind/LICENSE.TXT",
+          "sha256": "b5efebcaca80879234098e52d1725e6d9eb8fb96a19fce625d39184b705f7b6d"
+        },
+        {
+          "path": "emscripten/tools__ports__sdl2.py.txt",
+          "upstream": "https://github.com/emscripten-core/emscripten/blob/5c27e79dd0a9c4e27ef2326841698cdd4f6b5784/tools/ports/sdl2.py",
+          "sha256": "2dff6dd2928476c78e54e20faed89cc3b688215dff54058e464ef7a0f4f9763c"
+        },
+        {
+          "path": "emscripten/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/emscripten-core/emscripten/tree/5c27e79dd0a9c4e27ef2326841698cdd4f6b5784",
+          "sha256": "d4bba4431b3e0c9dabb46a5b75da51a3c00e51a9f7533054262f435ba8d2b25d"
+        }
+      ]
+    },
+    {
+      "id": "sdl2",
+      "name": "SDL2 (Emscripten port)",
+      "version": "2.24.2",
+      "license": "Zlib; per-file notices retained in source",
+      "copyright": "Copyright (C) 1997-2022 Sam Lantinga <slouken@libsdl.org>",
+      "upstream": "https://github.com/libsdl-org/SDL/tree/55b03c7493a7abed33cf803d1380a40fa8af903f",
+      "changes": "GIFnoteによる第三者ソース・配信coreの変更なし。上流fork、frontendの変更、ビルド時パッチは同梱ソースと上流build/を参照。",
+      "scope": "Emscriptenが指定するSDL2ビルド入力。最終WASMに残るSDL2コード量はリンクマップ未取得のため未確定。",
+      "archive": "archives/sdl2-55b03c7493a7abed33cf803d1380a40fa8af903f.tgz",
+      "documents": [
+        {
+          "path": "sdl2/LICENSE.txt",
+          "upstream": "https://github.com/libsdl-org/SDL/blob/55b03c7493a7abed33cf803d1380a40fa8af903f/LICENSE.txt",
+          "sha256": "fcb07e07ac6bc8b2fcf047b50431ef4ebe5b619d7ca7c82212018309a9067426"
+        },
+        {
+          "path": "sdl2/SOURCE-NOTICES.txt",
+          "upstream": "https://github.com/libsdl-org/SDL/tree/55b03c7493a7abed33cf803d1380a40fa8af903f",
+          "sha256": "b38f0c2b53fb9890136652d24df97b1cfbb009160efd9161e1c89abfec23214f"
+        }
+      ]
+    },
+    {
+      "id": "gifuct-js",
+      "name": "gifuct-js",
+      "version": "2.1.2",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2015 Matt Way; deinterlace: Copyright (c) 2011 Shachaf Ben-Kiki; LZW original: Copyright (c) 2013 Xcellent Creations, Inc.",
+      "upstream": "https://github.com/matt-way/gifuct-js",
+      "changes": "GIFnoteによるソース変更なし。Viteによるバンドル・縮小あり。派生元の移植はgifuct-js上流によるもの。",
+      "scope": "ブラウザ用JavaScriptに同梱。",
+      "documents": [
+        {
+          "path": "gifuct-js/LICENSE.txt",
+          "upstream": "https://github.com/matt-way/gifuct-js/blob/c497192922d79acc537ec9f4796dfa2d89aaa13a/LICENSE",
+          "sha256": "8633cda68d7b47e98e3e563a2833e63792edeecdb24cab02bfb15f25c1b37072"
+        },
+        {
+          "path": "gifuct-js/jsgif-LICENSE.txt",
+          "upstream": "https://raw.githubusercontent.com/shachaf/jsgif/8f57a8d0ebf6f815b42faa6291a5ea3f98698fb7/LICENSE",
+          "sha256": "00fe44dd6ad1c3bb3ef1f5418ef1c172fe99a0c79a4590085f0d4b07532a275b"
+        },
+        {
+          "path": "gifuct-js/GifDecoder.java.txt",
+          "upstream": "https://gist.githubusercontent.com/devunwired/4479231/raw/df2725be4ae0f12f5265deaf0a769936ea94950b/GifDecoder.java",
+          "sha256": "c77ba6d0b0f09635a6462be30f09825295973d4b735fd398d862ac12b7ea527d"
+        }
+      ]
+    },
+    {
+      "id": "js-binary-schema-parser",
+      "name": "js-binary-schema-parser",
+      "version": "2.0.3",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2015 Matt Way",
+      "upstream": "https://github.com/matt-way/jsBinarySchemaParser",
+      "changes": "GIFnoteによるソース変更なし。Viteによるバンドル・縮小あり。派生元の移植はgifuct-js上流によるもの。",
+      "scope": "ブラウザ用JavaScriptに同梱。",
+      "documents": [
+        {
+          "path": "js-binary-schema-parser/LICENSE.txt",
+          "upstream": "https://github.com/matt-way/jsBinarySchemaParser/blob/333f7eb5b4ef958a5fee71ec704f1eae5a65b78b/LICENSE",
+          "sha256": "8633cda68d7b47e98e3e563a2833e63792edeecdb24cab02bfb15f25c1b37072"
+        }
+      ]
+    },
+    {
+      "id": "vite",
+      "name": "Vite browser preload helpers",
+      "version": "7.3.6",
+      "copyright": "Copyright (c) 2019-present, VoidZero Inc. and Vite contributors",
+      "upstream": "https://github.com/vitejs/vite/tree/v7.3.6",
+      "license": "MIT",
+      "changes": "GIFnoteによる変更なし。ビルド時に生成・縮小。",
+      "scope": "配信される小さなruntime helperのみ。Vite開発サーバーやRollup本体を配信するものではありません。",
+      "documents": [
+        {
+          "path": "vite/LICENSE.txt",
+          "upstream": "https://github.com/vitejs/vite/blob/v7.3.6/packages/vite/LICENSE.md",
+          "sha256": "444c5ec3bf7f798af5c5179d734673cbcb115b22b1ef48e6d85bc941ac8777a2"
+        }
+      ]
+    },
+    {
+      "id": "rollup-commonjs",
+      "name": "@rollup/plugin-commonjs generated CommonJS wrappers",
+      "version": "29.0.0 (bundled in Vite 7.3.6; upstream pnpm-lock.yaml)",
+      "copyright": "Copyright (c) 2019 RollupJS Plugin Contributors",
+      "upstream": "https://github.com/rollup/plugins/tree/commonjs-v29.0.0/packages/commonjs",
+      "license": "MIT",
+      "changes": "GIFnoteによる変更なし。ビルド時に生成・縮小。",
+      "scope": "配信される小さなruntime helperのみ。Vite開発サーバーやRollup本体を配信するものではありません。",
+      "documents": [
+        {
+          "path": "rollup-commonjs/LICENSE.txt",
+          "upstream": "https://github.com/vitejs/vite/blob/v7.3.6/packages/vite/LICENSE.md",
+          "sha256": "06cf118fa0b4f74c8c537d7f5d511ec8ba9fffb75c74fa5ec91753ef5d089658"
+        }
+      ]
+    }
+  ]
+}

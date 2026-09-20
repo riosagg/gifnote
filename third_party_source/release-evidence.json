@@ -1,0 +1,39 @@
+{
+  "checkedOn": "2026-09-19",
+  "npm": {
+    "name": "@ffmpeg/core",
+    "version": "0.12.10",
+    "license": "GPL-2.0-or-later",
+    "dist": {
+      "shasum": "3177e88852bfbfaad5d258e9e0ac1fd9dffd3223",
+      "tarball": "https://registry.npmjs.org/@ffmpeg/core/-/core-0.12.10.tgz",
+      "fileCount": 5,
+      "integrity": "sha512-dzNplnn2Nxle2c2i2rrDhqcB19q9cglCkWnoMTDN9Q9l3PvdjZWd1HfSPjCNWc/p8Q3CT+Es9fWOR0UhAeYQZA==",
+      "signatures": [
+        {
+          "sig": "MEUCIFLbKVn2w6yLJUGz/hDct+/gKYR1k6vafNg6wF14M9/2AiEAk82sQXJ7LnxSBSg7ZlusDfhNh2zDTzx1Qz9BKKekv9o=",
+          "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+        }
+      ],
+      "unpackedSize": 64689644
+    },
+    "gitHead": null,
+    "publishedAt": "2025-01-07T10:13:14.328Z"
+  },
+  "release": {
+    "commit": "71aa99d37c02a7b4c435275ca9ef50e612f6efa1",
+    "date": "2025-01-07T10:12:48Z",
+    "message": "RELEASE: @ffmpeg/core and @ffmpeg/core-mt v0.12.10",
+    "tag": "v12.15"
+  },
+  "sdlPort": {
+    "url": "https://codeload.github.com/libsdl-org/SDL/zip/refs/tags/release-2.24.2",
+    "sha512": "b178bdc8f7c40271e09a72f639649d1d61953dda4dc12b77437259667b63b961fd3b2c67b0de6fdc5f9f9c80c49bfafd164e4c13715bc1056e550acc8bad5a3c",
+    "verifiedAgainst": "emscripten 3.1.40 tools/ports/sdl2.py"
+  },
+  "limitations": [
+    "npm metadata contains no gitHead or source/build attestation.",
+    "Sources reconstructed from the upstream release recipe; no byte-identical rebuild performed.",
+    "Mutable build refs resolved to commits; historical build input identity is not cryptographically attested."
+  ]
+}

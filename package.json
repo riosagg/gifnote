@@ -1,0 +1,27 @@
+{
+  "name": "gifnote",
+  "private": true,
+  "version": "0.1.0",
+  "license": "GPL-2.0-or-later",
+  "type": "module",
+  "engines": { "node": ">=22.12.0" },
+  "scripts": {
+    "postinstall": "node scripts/copy-ffmpeg.mjs",
+    "predev": "node scripts/copy-ffmpeg.mjs && node scripts/prepare-third-party.mjs",
+    "dev": "vite --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import ./scripts/test-runtime.mjs scripts/app.test.mjs && npm run licenses:test",
+    "build": "node scripts/copy-ffmpeg.mjs && node scripts/prepare-third-party.mjs && tsc --noEmit && vite build && node scripts/verify-third-party.mjs",
+    "licenses:prepare": "node scripts/copy-ffmpeg.mjs && node scripts/prepare-third-party.mjs",
+    "licenses:verify": "node scripts/verify-third-party.mjs",
+    "licenses:verify:http": "node scripts/verify-third-party.mjs --http-base http://127.0.0.1:4173/",
+    "licenses:test": "node scripts/public-links.test.mjs",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@ffmpeg/core": "0.12.10",
+    "@ffmpeg/ffmpeg": "0.12.15",
+    "gifuct-js": "2.1.2"
+  },
+  "devDependencies": { "typescript": "~5.9.3", "vite": "^7.1.7" }
+}

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.npm-cache/
+public/ffmpeg/
+public/licenses/
+public/third_party_source/
+public/license/
+public/source/
+third_party_source/rebuild-context/
+*.log
+.DS_Store

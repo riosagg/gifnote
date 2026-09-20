@@ -1,0 +1,25 @@
+GIFnote — a browser-based video/GIF conversion tool
+Copyright (C) 2026 riosagg
+SPDX-License-Identifier: GPL-2.0-or-later
+
+GIFnote's original code is free software: you can redistribute it and/or
+modify it under the terms of the GNU General Public License as published
+by the Free Software Foundation, either
+version 2 of the License, or (at your option) any later version.
+
+GIFnote is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with GIFnote. See the accompanying LICENSE file.
+
+Scope: GIFnote's original src/, HTML/CSS, favicon, scripts/, configuration,
+documentation, and the original download-sources.mjs / prepare_rebuild.py
+helpers in third_party_source/ are offered under GPL-2.0-or-later.
+
+Third-party components retain their original copyright notices and
+licenses. This declaration does not relicense the contents of licenses/,
+third_party_source/archives/, dependency_source/, npm dependencies, or
+upstream materials reproduced in evidence files. See THIRD_PARTY_NOTICES.md.

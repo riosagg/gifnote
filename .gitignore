@@ -9,3 +9,4 @@ public/source/
 third_party_source/rebuild-context/
 *.log
 .DS_Store
+/promo-video/

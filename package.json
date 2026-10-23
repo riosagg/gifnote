@@ -23,5 +23,5 @@
     "@ffmpeg/ffmpeg": "0.12.15",
     "gifuct-js": "2.1.2"
   },
-  "devDependencies": { "typescript": "~5.9.3", "vite": "^7.1.7" }
+  "devDependencies": { "typescript": "~5.9.3", "vite": "^7.3.7" }
 }
